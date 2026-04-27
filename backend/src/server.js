@@ -27,6 +27,11 @@ const isAllowedOrigin = (origin) => {
     return true;
   }
 
+  // Allow Render domains automatically
+  if (origin.endsWith("onrender.com")) {
+    return true;
+  }
+
   return ENV.NODE_ENV !== "production" && LOCALHOST_ORIGIN_PATTERN.test(origin);
 };
 
